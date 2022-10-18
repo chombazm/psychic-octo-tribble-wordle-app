@@ -1,5 +1,5 @@
 # Wordle by Chomba - React Native 
-<a target="_blank" href='https://www.linkedin.com/in/chomba-chanda-bab8ab20b/'><img alt='Get it on Google Play' src='https://goldtonemusicgroup.com/img/goldtone/main-page/news/playstore-badge.png' height='48px'/></a>
+<a target="_blank" href='https://www.linkedin.com/in/chomba-chanda-bab8ab20b/'><img alt='Get it on Google Play' src='https://raw.githubusercontent.com/chombazm/psychic-octo-tribble-wordle-app/main/screenshots/poweredByChombaBlack.png' height='48px'/></a>
 
 Guess the Wordle in 6 tries. Each guess must be a valid 5-letter word. The color of the tiles will change to show how close your guess was to the word.
 
