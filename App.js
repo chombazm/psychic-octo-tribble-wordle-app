@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Alert } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Alert, Platform } from 'react-native';
 import { colors, CLEAR, ENTER, colorsToEmoji } from './src/constants';
 import Keyboard from './src/components/Keyboard';
 import * as Clipboard from 'expo-clipboard'; 
+import { fiveLetterWord } from './Data';
 
 const NUMBER_OF_TRIES = 6;
 const copyArr = (arr) => {
   return [...arr.map((item) => [ ...item ])];
 };
 
+// Function to generate random number  to use to index word array
+
 export default function App() {
-  const word = "hello";
+  const word = fiveLetterWord;
+  // const word = "hello";
   const letters = word.split('');
 
   const [rows, setRows] = useState(new Array(NUMBER_OF_TRIES).fill(new Array(letters.length).fill('')))
@@ -33,9 +37,12 @@ export default function App() {
         { text: 'Share', onPress: shareScore },
       ]);
       setGameState('won');
+      resetGame();
+
     }else if (checkIfLost() ) {
       Alert.alert("Sorry! you have lost!")
       setGameState('lost');
+      resetGame();
     }
   }
   const checkIfWon = () => {
@@ -68,6 +75,7 @@ export default function App() {
         setCurRow(curRow + 1);
         setCurCol(0);
       }
+      return;
     }
       
 
@@ -83,6 +91,13 @@ export default function App() {
   const isCellActive = (row, col) => {
     return row === curRow && col === curCol;
   } 
+
+  const resetGame = () => {
+    setRows(new Array(NUMBER_OF_TRIES).fill(new Array(letters.length).fill('')))
+    setCurRow(0)
+    setCurCol(0)
+    setGameState('playing');
+  }
 
   const getCellBGColor = (row, col) => {
     const letter = rows[row][col];
@@ -124,10 +139,10 @@ export default function App() {
         WORDLE
       </Text>
       <ScrollView style={styles.map}>
-       {rows.map((row, i) => (
-         <View style={styles.row} key={`row-${i}`}>
-         {row.map((letter, j) => (
-           <View key={`cell-${i}-${j}`}
+      {rows.map((row, i) => (
+        <View style={styles.row} key={`row-${i}`}>
+        {row.map((letter, j) => (
+          <View key={`cell-${i}-${j}`}
             style={
               [
                 styles.cell, 
@@ -137,10 +152,10 @@ export default function App() {
             <Text style={styles.cellText}>
               {letter.toUpperCase()}
             </Text>
-           </View>
-         ))}
-       </View>
-       ))}
+          </View>
+        ))}
+      </View>
+      ))}
       </ScrollView>
 
       <Keyboard
@@ -158,12 +173,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.black,
     alignItems: 'center',
+    ...Platform.select({
+      android: {
+        paddingTop: 70,
+      },
+     
+    })
   },
   title: {
     color: colors.lightgrey,
     fontSize: 32,
     fontWeight: 'bold',
-    letterSpacing: 7
+    letterSpacing: 7,
+    // paddingTop: Platform
   },
   map: {
     alignSelf: 'stretch',

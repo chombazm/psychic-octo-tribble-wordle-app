@@ -7,6 +7,7 @@ const keyHeight = keyWidth * 1.3;
 
 export default StyleSheet.create({
   keyboard: {
+    width: "100%",
     alignSelf: "stretch",
     marginTop: "auto",
   },

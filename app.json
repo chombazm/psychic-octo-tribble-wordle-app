@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "wordle",
-    "slug": "wordle",
+    "slug": "wordlebychomba",
+    "owner": "chombazm",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +10,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#121214"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,13 +22,20 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.wordlebychomba",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#121214"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c18c046d-44ac-4288-9ee5-e5c7e764a306"
+      }
     }
   }
 }
