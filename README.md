@@ -3,7 +3,7 @@
 
 Guess the Wordle in 6 tries. Each guess must be a valid 5-letter word. The color of the tiles will change to show how close your guess was to the word.
 
-<a target="_blank" href='https://play.google.com/store/apps/details?id=devPS.quizadda'><img alt='Get it on Google Play' src='https://goldtonemusicgroup.com/img/goldtone/main-page/news/playstore-badge.png' height='48px'/></a>
+<a target="_blank" href='https://play.google.com/store/apps/details?id=com.wordlebychomba'><img alt='Get it on Google Play' src='https://goldtonemusicgroup.com/img/goldtone/main-page/news/playstore-badge.png' height='48px'/></a>
 
 ## Features ✨
 
