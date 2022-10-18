@@ -14,9 +14,9 @@ The game has few main features:
 3. Play again when you loose
 
 ## Screenshots 
-Splash                      |  Landin         |  Game | Won
+Splash                      |  Landing         |  Game | Won
 :-------------------------:|:------------------------:|:------------------------:|:------------------------:
-![](https://raw.githubusercontent.com/chombazm/laughing-meme-MoodPicker/main/screenshots/Home.png)  |  ![](https://raw.githubusercontent.com/chombazm/laughing-meme-MoodPicker/main/screenshots/SelectedMood.png) |  ![](https://raw.githubusercontent.com/chombazm/laughing-meme-MoodPicker/main/screenshots/Mood%20list.png) | ![](https://raw.githubusercontent.com/chombazm/laughing-meme-MoodPicker/main/screenshots/Analytics.png)
+![](https://raw.githubusercontent.com/chombazm/psychic-octo-tribble-wordle-app/main/screenshots/splash.png)  |  ![](https://raw.githubusercontent.com/chombazm/psychic-octo-tribble-wordle-app/main/screenshots/landing.png) |  ![](https://raw.githubusercontent.com/chombazm/psychic-octo-tribble-wordle-app/main/screenshots/game.png) | ![](https://github.com/chombazm/psychic-octo-tribble-wordle-app/blob/main/screenshots/won.png)
 
 
 ## Future works
