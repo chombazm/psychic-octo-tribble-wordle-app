@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Alert, Platform } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Alert, Platform, ImageBackground } from 'react-native';
 import { colors, CLEAR, ENTER, colorsToEmoji } from './src/constants';
 import Keyboard from './src/components/Keyboard';
 import * as Clipboard from 'expo-clipboard'; 
@@ -14,7 +14,7 @@ const copyArr = (arr) => {
 // Function to generate random number  to use to index word array
 
 export default function App() {
-  const word = fiveLetterWord;
+  const word = fiveLetterWord.toLowerCase();
   // const word = "hello";
   const letters = word.split('');
 
@@ -40,7 +40,10 @@ export default function App() {
       resetGame();
 
     }else if (checkIfLost() ) {
-      Alert.alert("Sorry! you have lost!")
+      // Alert.alert("Sorry! you have lost!", `The word was ${word}`)
+      Alert.alert('Sorry! you have lost!', `The word was ${word}`, [
+        { text: 'Play again', onPress: resetGame },
+      ]);
       setGameState('lost');
       resetGame();
     }
@@ -103,7 +106,7 @@ export default function App() {
     const letter = rows[row][col];
 
     if (row >= curRow) {
-      return colors.black
+      return colors.grey
     }
     if (letter === letters[col]) {
       return colors.primary;
@@ -111,7 +114,7 @@ export default function App() {
     if (letters.includes(letter)) {
       return colors.secondary;
     }
-    return colors.darkgrey
+    return colors.black
   }
 
 
@@ -124,21 +127,22 @@ export default function App() {
   const shareScore = async() => {
     const textShare = rows.map((row, i) => row.map((cell, j) => colorsToEmoji[getCellBGColor(i,j)]).join("")).filter(row => row).join("\n");
 
-    await Clipboard.setStringAsync(`My todays wordle \n \n${textShare}`);
+    await Clipboard.setStringAsync(`My todays word \n \n${textShare}`);
     Alert.alert("Copied to clipboard", textShare);
   }
   const greenCaps = getAllLetterWithColors(colors.primary)
   const yellowCaps = getAllLetterWithColors(colors.secondary)
   const greyCaps = getAllLetterWithColors(colors.darkgrey) 
   return (
-    <SafeAreaView style={styles.container}>
+    <ImageBackground source={require('./assets/background2.jpeg')} style={styles.container}>
+      <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
 
 
       <Text style={styles.title}>
-        WORDLE
+        Play
       </Text>
-      <ScrollView style={styles.map}>
+      <View style={styles.map}>
       {rows.map((row, i) => (
         <View style={styles.row} key={`row-${i}`}>
         {row.map((letter, j) => (
@@ -148,7 +152,7 @@ export default function App() {
                 styles.cell, 
                 {
                   borderColor: isCellActive(i,j) ? colors.lightgrey : colors.darkgrey,
-                  backgroundColor: getCellBGColor(i,j )}] }>
+                  backgroundColor: getCellBGColor(i,j )}]}>
             <Text style={styles.cellText}>
               {letter.toUpperCase()}
             </Text>
@@ -156,7 +160,7 @@ export default function App() {
         ))}
       </View>
       ))}
-      </ScrollView>
+      </View>
 
       <Keyboard
         onKeyPressed={handleKeyPress}
@@ -165,19 +169,19 @@ export default function App() {
         greyCaps={greyCaps}
         />
     </SafeAreaView>
+      </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.black,
+    justifyContent: 'center',
     alignItems: 'center',
     ...Platform.select({
       android: {
         paddingTop: 70,
       },
-     
     })
   },
   title: {
@@ -188,8 +192,12 @@ const styles = StyleSheet.create({
     // paddingTop: Platform
   },
   map: {
+    // maxWidth: '0%',
+    display: 'flex',
+    justifyContent: 'center',
+    marginHorizontal: 'auto',
     alignSelf: 'stretch',
-    marginVertical: 20, 
+    marginVertical: 20,
   },
   row: {
     alignSelf: 'stretch',
@@ -204,7 +212,8 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 3
+    margin: 3,
+    
   },
   cellText: {
     fontWeight: 'bold',

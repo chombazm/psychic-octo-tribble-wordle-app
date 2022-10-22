@@ -16,7 +16,7 @@ The game has few main features:
 ## Screenshots 
 Splash                      |  Landing         |  Game | Won
 :-------------------------:|:------------------------:|:------------------------:|:------------------------:
-![](https://raw.githubusercontent.com/chombazm/psychic-octo-tribble-wordle-app/main/screenshots/splash.png)  |  ![](https://raw.githubusercontent.com/chombazm/psychic-octo-tribble-wordle-app/main/screenshots/landing.png) |  ![](https://raw.githubusercontent.com/chombazm/psychic-octo-tribble-wordle-app/main/screenshots/game.png) | ![](https://github.com/chombazm/psychic-octo-tribble-wordle-app/blob/main/screenshots/won.png)
+![](./screenshots/splash.png)  |  ![](./screenshots/landing.png) |  ![](./screenshots/game.png) | ![](./screenshots/won.png)
 
 
 ## Future works
