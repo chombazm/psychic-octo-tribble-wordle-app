@@ -130,17 +130,21 @@ export default function App() {
     await Clipboard.setStringAsync(`My todays word \n \n${textShare}`);
     Alert.alert("Copied to clipboard", textShare);
   }
+
   const greenCaps = getAllLetterWithColors(colors.primary)
   const yellowCaps = getAllLetterWithColors(colors.secondary)
   const greyCaps = getAllLetterWithColors(colors.darkgrey) 
   return (
-    <ImageBackground source={require('./assets/background2.jpeg')} style={styles.container}>
+    <ImageBackground source={require('./assets/background1.jpeg')} style={styles.container}>
       <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
 
 
       <Text style={styles.title}>
         Play
+      </Text>
+      <Text style={{ color: colors.black, fontSize: 20 }}>
+        Guess a 5 letter verb
       </Text>
       <View style={styles.map}>
       {rows.map((row, i) => (
@@ -180,12 +184,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     ...Platform.select({
       android: {
-        paddingTop: 70,
+        paddingTop: 40,
       },
     })
   },
   title: {
-    color: colors.lightgrey,
+    color: colors.black,
     fontSize: 32,
     fontWeight: 'bold',
     letterSpacing: 7,
