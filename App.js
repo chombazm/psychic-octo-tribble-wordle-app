@@ -17,6 +17,7 @@ export default function App() {
   const word = fiveLetterWord.toLowerCase();
   // const word = "hello";
   const letters = word.split('');
+  console.log(word, "word")
 
   const [rows, setRows] = useState(new Array(NUMBER_OF_TRIES).fill(new Array(letters.length).fill('')))
   const [curRow, setCurRow] = useState(0)
@@ -106,7 +107,7 @@ export default function App() {
     const letter = rows[row][col];
 
     if (row >= curRow) {
-      return colors.grey
+      return colors.black
     }
     if (letter === letters[col]) {
       return colors.primary;
@@ -114,7 +115,7 @@ export default function App() {
     if (letters.includes(letter)) {
       return colors.secondary;
     }
-    return colors.black
+    return colors.darkgrey
   }
 
 
@@ -130,12 +131,13 @@ export default function App() {
     await Clipboard.setStringAsync(`My todays word \n \n${textShare}`);
     Alert.alert("Copied to clipboard", textShare);
   }
-
   const greenCaps = getAllLetterWithColors(colors.primary)
   const yellowCaps = getAllLetterWithColors(colors.secondary)
   const greyCaps = getAllLetterWithColors(colors.darkgrey) 
+
+  console.log(greyCaps, "view gray caps")
   return (
-    <ImageBackground source={require('./assets/background1.jpeg')} style={styles.container}>
+    <ImageBackground source={require('./assets/background2.jpeg')} style={styles.container}>
       <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
 
@@ -156,7 +158,7 @@ export default function App() {
                 styles.cell, 
                 {
                   borderColor: isCellActive(i,j) ? colors.lightgrey : colors.darkgrey,
-                  backgroundColor: getCellBGColor(i,j )}]}>
+                  backgroundColor: getCellBGColor(i,j )}] }>
             <Text style={styles.cellText}>
               {letter.toUpperCase()}
             </Text>
